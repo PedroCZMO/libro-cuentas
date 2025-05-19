@@ -48,7 +48,10 @@
       "dmg",
       "zip"
     ],
-    "arch":["x64","arm64"]
+    "arch":[
+      "x64",
+      "arm64"
+    ]
   },
   "directories": {
     "output": "dist_electron"
