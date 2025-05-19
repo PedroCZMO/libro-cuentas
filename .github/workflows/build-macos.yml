@@ -29,8 +29,9 @@ jobs:
           npm install
           npm run build
 
-      - name: Generar .dmg
-        run: npm run electron:dist
+      - name: Generar .dmg universal
+        run: npm run electron:dist -- --arm64 --x64
+
 
       - name: Subir .dmg como artefacto
         if: always()
