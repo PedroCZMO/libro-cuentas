@@ -33,6 +33,7 @@ jobs:
         run: npm run electron:dist
 
       - name: Subir .dmg como artefacto
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: libro-cuentas-macos
