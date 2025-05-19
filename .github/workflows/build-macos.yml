@@ -1,0 +1,39 @@
+name: Build macOS .dmg
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Instalar dependencias frontend
+        run: npm install
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Instalar dependencias Electron
+        working-directory: electron
+        run: |
+          npm install
+          npm run build
+
+      - name: Generar .dmg
+        run: npm run electron:dist
+
+      - name: Subir .dmg como artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: libro-cuentas-macos
+          path: dist_electron/*.dmg
