@@ -40,7 +40,8 @@
   "productName": "Libro de Cuentas",
   "files": [
     "electron/**/*",
-    "index.js"  
+    "index.js",
+    "capacitor.config.json"  
   ],
   "mac": {
     "target": [
