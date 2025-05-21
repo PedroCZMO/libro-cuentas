@@ -29,6 +29,9 @@ jobs:
           npm install
           npm run build
 
+      - name: Run Capacitor Sync
+        run: npx cap sync @capacitor-community/electron
+        
       - name: Generar .dmg universal
         run: npm run electron:dist -- --x64
 

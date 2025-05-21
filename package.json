@@ -42,8 +42,8 @@
     "electron/**/*",
     "index.js",
     "capacitor.config.json",
-    "build/**/*",
-    "build/src/rt/electron-plugins.js"
+    "electron/build/**/*",
+    "electron/build/src/rt/electron-plugins.js"
   ],
   "mac": {
     "target": [
