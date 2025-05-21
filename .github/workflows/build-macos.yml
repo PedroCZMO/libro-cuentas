@@ -30,7 +30,7 @@ jobs:
           npm run build
 
       - name: Generar .dmg universal
-        run: npm run electron:dist -- --arm64 --x64
+        run: npm run electron:dist -- --x64
 
 
       - name: Subir .dmg como artefacto
