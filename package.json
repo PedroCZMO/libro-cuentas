@@ -4,18 +4,19 @@
   "description": "Aplicación de control de ingresos y gastos para estudio fotográfico",
   "private": true,
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "electron/build/src/index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "electron:dist": "electron-builder --config"
+    "electron:dist": "electron-builder --mac"
   },
   "dependencies": {
     "@capacitor-community/electron": "^5.0.1",
     "@capacitor/cli": "^7.2.0",
     "@capacitor/core": "^7.2.0",
+    "@capacitor/ios": "^7.2.0",
     "file-saver": "^2.0.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -27,7 +28,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
-    "electron": "^36.2.0",
+    "electron": "^36.2.1",
     "electron-builder": "^26.0.12",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -40,21 +41,15 @@
   "productName": "Libro de Cuentas",
   "files": [
     "electron/**/*",
-    "index.js",
-    "capacitor.config.json",
-    "electron/build/**/*",
-    "electron/build/src/rt/electron-plugins.js"
+    "dist/**/*",
+    "capacitor.config.*"
   ],
   "mac": {
-    "target": [
-      "dmg",
-      "zip"
-    ]
+    "target": ["dmg", "zip"]
   },
   "directories": {
     "output": "dist_electron"
   }
 }
-
 
 }
