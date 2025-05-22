@@ -35,7 +35,7 @@ jobs:
           npm run build
 
       - name: Build Electron app (macOS)
-        run: npm run electron:dist
+        run: npm run electron:dist -- --mac --x64
 
       - name: Upload DMG Artifact
         uses: actions/upload-artifact@v4
