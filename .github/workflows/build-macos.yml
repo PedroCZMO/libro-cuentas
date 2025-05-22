@@ -1,44 +1,44 @@
-name: Build macOS .dmg
+name: Build Electron App for macOS
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-macos:
+  build:
     runs-on: macos-latest
 
     steps:
-      - name: Clonar repositorio
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Instalar Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Instalar dependencias frontend
+      - name: Install dependencies
         run: npm install
 
-      - name: Build frontend
+      - name: Build web app
         run: npm run build
 
-      - name: Instalar dependencias Electron
-        working-directory: electron
+      - name: Copy web to Electron
+        run: npx cap copy @capacitor-community/electron
+
+      - name: Install Electron deps
+        working-directory: ./electron
         run: |
           npm install
           npm run build
 
-      - name: Run Capacitor Sync
-        run: npx cap sync @capacitor-community/electron
-        
-      - name: Generar .dmg universal
-        run: npm run electron:dist -- --x64
+      - name: Build Electron app (macOS)
+        run: npm run electron:dist
 
-
-      - name: Subir .dmg como artefacto
-        if: always()
+      - name: Upload DMG Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: libro-cuentas-macos
+          name: libro-cuentas-mac
           path: dist_electron/*.dmg
