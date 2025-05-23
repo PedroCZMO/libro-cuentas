@@ -10,7 +10,10 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "electron:dist": "electron-builder --mac"
+    "electron:dist": "electron-builder --mac",
+    "electron:build": "cd electron && npm install && npm run build",
+    "preelectron:dist": "npm run build && npm run electron:build"
+
   },
   "dependencies": {
     "@capacitor-community/electron": "^5.0.1",
@@ -40,7 +43,7 @@
   "appId": "com.veo.librocuentas",
   "productName": "Libro de Cuentas",
   "files": [
-    "electron/**/*",
+    "electron/build/**/*",
     "dist/**/*",
     "capacitor.config.*"
   ],

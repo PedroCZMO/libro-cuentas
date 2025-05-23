@@ -1,0 +1,6 @@
+{
+  "appId": "com.veo.librocuentas",
+  "appName": "libro-cuentas",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
