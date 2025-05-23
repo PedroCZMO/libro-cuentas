@@ -43,6 +43,7 @@
   "appId": "com.veo.librocuentas",
   "productName": "Libro de Cuentas",
   "files": [
+    "electron/app/*",
     "electron/build/**/*",
     "dist/**/*",
     "capacitor.config.*"
