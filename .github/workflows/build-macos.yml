@@ -11,32 +11,35 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repo
+      - name: 📥 Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: 🔧 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: 📦 Install root dependencies
         run: npm install
 
-      - name: Build web app
+      - name: 🧱 Build web app
         run: npm run build
 
-      - name: Copy web to Electron
+      - name: 📦 Install Electron deps
+        working-directory: ./electron
+        run: npm install
+
+      - name: 🛠 Build Electron backend (index.js)
+        working-directory: ./electron
+        run: npm run build
+
+      - name: 🔄 Copy web to Electron
         run: npx cap copy @capacitor-community/electron
 
-      - name: Install Electron deps
-        working-directory: ./electron
-        run: |
-          npm install
-          npm run build
-      - name: Build Electron app (macOS)
+      - name: 📦 Build Electron app (macOS x64)
         run: npm run electron:dist -- --mac --x64
 
-      - name: Upload DMG Artifact
+      - name: ☁️ Upload DMG Artifact
         uses: actions/upload-artifact@v4
         with:
           name: libro-cuentas-mac
