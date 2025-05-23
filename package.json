@@ -4,7 +4,7 @@
   "description": "Aplicación de control de ingresos y gastos para estudio fotográfico",
   "private": true,
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "electron/build/src/index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
